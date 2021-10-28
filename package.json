@@ -1,0 +1,25 @@
+{
+  "name": "duit-api",
+  "version": "1.0.0",
+  "description": "Web API for DUIT.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-flash": "^0.0.2",
+    "express-promise-router": "^4.1.0",
+    "express-session": "^1.17.2",
+    "install": "^0.13.0",
+    "pg": "^8.7.1",
+    "uninstall": "^0.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.14"
+  }
+}
