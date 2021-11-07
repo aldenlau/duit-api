@@ -1,7 +1,11 @@
 const cors = require('cors');
 const express = require('express');
 const app = express();
-const port = 8000;
+const port = provess.env.PORT;
+
+if (port == null || port == "") {
+  port = 8000;
+}
 
 const bcrypt = require('bcryptjs');
 const db = require('./database.js');
