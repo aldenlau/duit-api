@@ -84,7 +84,6 @@ router.post('/login-google', async (req, res) => {
         else {
             db.query('UPDATE users SET use_google=TRUE WHERE user_id=$1', [email])
             .then(_ => {
-                console.log(queryRes.rows[0].token);
                 res.json({token: queryRes.rows[0].token});
             })
             .catch(e => console.error(e.stack));
