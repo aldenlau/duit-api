@@ -68,6 +68,7 @@ router.post('/login-google', async (req, res) => {
     });
     const payload = ticket.getPayload();
     const email = payload['email'];
+    console.log(email);
     db.query('SELECT token, use_google FROM users WHERE user_id=$1', [email])
     .then(async queryRes => {
         if (queryRes.rows.length==0) {
