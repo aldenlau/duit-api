@@ -1,3 +1,4 @@
+// TODO: Migrate Google sign-in
 const express = require('express');
 const router = express.Router();
 const db = require('./database.js');
@@ -68,7 +69,6 @@ router.post('/login-google', async (req, res) => {
     });
     const payload = ticket.getPayload();
     const email = payload['email'];
-    console.log(email);
     db.query('SELECT token, use_google FROM users WHERE user_id=$1', [email])
     .then(async queryRes => {
         if (queryRes.rows.length==0) {
@@ -82,8 +82,9 @@ router.post('/login-google', async (req, res) => {
             .catch(e => console.error(e.stack));
         }
         else {
-            db.query('UPDATE users SET use_google = true WHERE user_id=$1', [email])
+            db.query('UPDATE users SET use_google=TRUE WHERE user_id=$1', [email])
             .then(_ => {
+                console.log(queryRes.rows[0].token);
                 res.json({token: queryRes.rows[0].token});
             })
             .catch(e => console.error(e.stack));
